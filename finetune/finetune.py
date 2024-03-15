@@ -1,11 +1,13 @@
 import argparse
 import os
-
+import sys
+import glob
+from datasets import IterableDataset
 import torch
 from accelerate import Accelerator
 from datasets import load_dataset
 from peft import LoraConfig, get_peft_model, prepare_model_for_int8_training, set_peft_model_state_dict
-from torch.utils.data import IterableDataset
+# from torch.utils.data import IterableDataset
 from tqdm import tqdm
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments, logging, set_seed
 from transformers import TrainerCallback, TrainingArguments, TrainerState, TrainerControl
@@ -76,16 +78,15 @@ def get_args():
     parser.add_argument("--num_warmup_steps", type=int, default=100)
     parser.add_argument("--weight_decay", type=float, default=0.05)
 
-    parser.add_argument("--local_rank", type=int, default=0)
     parser.add_argument("--no_fp16", action="store_false")
     parser.add_argument("--bf16", action="store_true", default=True)
     parser.add_argument("--no_gradient_checkpointing", action="store_false", default=False)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--num_workers", type=int, default=None)
     parser.add_argument("--output_dir", type=str, default="./checkpoints")
-    parser.add_argument("--log_freq", default=100, type=int)
-    parser.add_argument("--eval_freq", default=100, type=int)
-    parser.add_argument("--save_freq", default=1000, type=int)
+    parser.add_argument("--log_freq", default=1, type=int)
+    parser.add_argument("--eval_freq", default=10, type=int)
+    parser.add_argument("--save_freq", default=10, type=int)
 
     return parser.parse_args()
 
@@ -190,16 +191,29 @@ class ConstantLengthDataset(IterableDataset):
                         "labels": torch.LongTensor(input_ids),
                     }
 
+def gen():
+    prompts_list = glob.glob('dataset/train/prompts/*.txt')
+    prompts_list.sort()
+    ref_list = glob.glob('dataset/train/ref_scenarios/*.xosc')
+    ref_list.sort()
+    target_list = glob.glob('dataset/train/target_scenarios/*.xosc')
+    target_list.sort()
+
+    for i in range(len(ref_list)):
+        with open(prompts_list[i], 'r') as prompt:
+            with open(ref_list[i], 'r') as ref:
+                with open(target_list[i], 'r') as target:
+                    prompt = prompt.read()
+                    ref = ref.read()
+                    add = "<!-- " + prompt + " -->\n"
+                    ref = add + ref
+                    target = target.read()
+                    yield {'prompt': ref, 'target': target}
 
 def create_datasets(tokenizer, args):
-    dataset = load_dataset(
-        args.dataset_name,
-        data_dir=args.subset,
-        split=args.split,
-        use_auth_token=True,
-        num_proc=args.num_workers if not args.streaming else None,
-        streaming=args.streaming,
-    )
+
+    dataset = IterableDataset.from_generator(gen)
+
     if args.streaming:
         print("Loading the dataset in streaming mode")
         valid_data = dataset.take(args.size_valid_set)
