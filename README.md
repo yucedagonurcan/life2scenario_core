@@ -50,6 +50,9 @@ There are three main components of the dataset generation module:
       2. `ref_scenarios/`: Contains the reference scenario descriptions, `.xosc`
       3. `target_scenarios/`: Contains the target scenario descriptions, `.xosc`
 
+[![Life2Scenario Dataset Creation Pipeline Overview](https://img.youtube.com/vi/Fdeo5Of0PZ4/0.jpg)](https://www.youtube.com/watch?v=Fdeo5Of0PZ4)
+
+
 # Fine-tuning the Model
 The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal` dataset with the `transformers` library. 
 
