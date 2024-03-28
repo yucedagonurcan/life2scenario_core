@@ -68,10 +68,9 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 ## Model Regisry
 | Model Name | Model Link | Dataset Name | Dataset Link |
 |------------|------------|--------------|--------------|
-| `starcoderbase_3b_life2scenario_medium_60ep` | [starcoderbase_3b_life2scenario_medium_60ep](https://huggingface.co/olmaditekrar/starcoderbase_3b_life2scenario_medium_60ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/olmaditekrar/Life2Scenario-medium) |
-| `starcoderbase_1b_life2scenario_minimal_210ep` | [starcoderbase_1b_life2scenario_minimal_210ep](https://huggingface.co/olmaditekrar/starcoderbase_1b_life2scenario_minimal_210ep) | `Life2Scenario-minimal` | [Life2Scenario-minimal](https://huggingface.co/datasets/olmaditekrar/Life2Scenario-minimal) |
-| `starcoderbase_1b_life2scenario_medium_300ep` | [starcoderbase_1b_life2scenario_medium_300ep](https://huggingface.co/olmaditekrar/starcoderbase_1b_life2scenario_medium_300ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/olmaditekrar/Life2Scenario-medium) |
-
+| `starcoderbase_3b_life2scenario_medium_60ep` | [starcoderbase_3b_life2scenario_medium_60ep](https://huggingface.co/life2scenario-llm24/starcoderbase_3b_life2scenario_medium_60ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
+| `starcoderbase_1b_life2scenario_minimal_210ep` | [starcoderbase_1b_life2scenario_minimal_210ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_minimal_210ep) | `Life2Scenario-minimal` | [Life2Scenario-minimal](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-minimal) |
+| `starcoderbase_1b_life2scenario_medium_300ep` | [starcoderbase_1b_life2scenario_medium_300ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_medium_300ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
 
 
 
