@@ -62,7 +62,11 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
   - Model Link: [bigcode/starcoderbase-1b](https://huggingface.co/bigcode/starcoderbase-1b)
   - Model Link: [bigcode/starcoderbase-3b](https://huggingface.co/bigcode/starcoderbase-3b)
 
-## Collection
+## Training Report (click to view)
+<!-- Wandb Image -->
+[<img src="https://storage.googleapis.com/preview-friendly-links-prod/wandb-public-images/links/olacaktekrar/vis92er7.png">](https://api.wandb.ai/links/olacaktekrar/vis92er7)
+
+## Collection (click to view)
 [<img src="assets/collection.png">](https://huggingface.co/collections/olmaditekrar/starcoderbase-life2scenario-6605dfb6cb776765fa7cc24d)
 
 ## Model Regisry
