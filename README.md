@@ -77,6 +77,33 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 | `starcoderbase_1b_life2scenario_medium_300ep` | [starcoderbase_1b_life2scenario_medium_300ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_medium_300ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
 
 
+# Qualitative Results
+We have used the following `GenerationConfig` to generate the results:
+```python
+generation_config = GenerationConfig(
+        temperature=0.9,
+        top_k=50,
+        top_p=0.80,
+        repetition_penalty=0.9,
+        do_sample=True,
+        pad_token_id=tokenizer.eos_token_id,
+        max_length=8000
+    )
+```
+
+## Example 1
+1. **Model:** `starcoderbase_1b_life2scenario_minimal_210ep`
+2. **Prompt:** `Question: would you add pedestrian close to hero?`
+3. Adding the object to `Storyboard`
+   1. ![alt text](assets/ex1_s1b_add_1.png)
+4. Adding the location to the `Actions`
+   1. ![alt text](assets/ex1_s1b_add_2.png)
+
+## Example 2
+1. **Model:** `starcoderbase_3b_life2scenario_medium_60ep`
+2. **Prompt:** `Question: i would like you to remove pedestrian actor named pedestrian_w_transform_15729?`
+3. Failing to remove the right object `pedestrian_w_transform_15729` from the Storyboard, only changing id of another pedestrian object
+   1. ![alt text](assets/ex2_s3b_remove.png)
 
 
 ## Main Libraries Used
