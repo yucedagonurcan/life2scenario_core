@@ -58,12 +58,21 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 
 
 - Codebase forked for starcoder: [starcoder](https://github.com/bigcode-project/starcoder)
-- `Life2Scenario-minimal` dataset is a minimal version of the dataset generated from the CARLA simulator. The dataset is preprocessed and used for fine-tuning the model.
-  - Datast Link: [Life2Scenario-minimal](https://drive.google.com/file/d/1Uaur3zMT0P5XWMYMRducxS1vf96F6CV9/view?usp=sharing)
-- Original model: `bigcode/starcoderbase-1b`
+- Original models: 
   - Model Link: [bigcode/starcoderbase-1b](https://huggingface.co/bigcode/starcoderbase-1b)
-- Finetuned version `bigcode/starcoderbase-1b` model on `Life2Scenario-minimal` dataset
-  - Model Link: [life2scenario/starcoderbase-1b-Life2Scenario-minimal](https://huggingface.co/life2scenario/starcoderbase-1b-Life2Scenario-minimal)
+  - Model Link: [bigcode/starcoderbase-3b](https://huggingface.co/bigcode/starcoderbase-3b)
+
+## Collection
+[<img src="assets/collection.png">](https://huggingface.co/collections/olmaditekrar/starcoderbase-life2scenario-6605dfb6cb776765fa7cc24d)
+
+## Model Regisry
+| Model Name | Model Link | Dataset Name | Dataset Link |
+|------------|------------|--------------|--------------|
+| `starcoderbase_3b_life2scenario_medium_60ep` | [starcoderbase_3b_life2scenario_medium_60ep](https://huggingface.co/life2scenario-llm24/starcoderbase_3b_life2scenario_medium_60ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
+| `starcoderbase_1b_life2scenario_minimal_210ep` | [starcoderbase_1b_life2scenario_minimal_210ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_minimal_210ep) | `Life2Scenario-minimal` | [Life2Scenario-minimal](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-minimal) |
+| `starcoderbase_1b_life2scenario_medium_300ep` | [starcoderbase_1b_life2scenario_medium_300ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_medium_300ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
+
+
 
 
 ## Main Libraries Used
