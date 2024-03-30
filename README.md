@@ -67,7 +67,7 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 - Training/Loss
   - [<img src="https://storage.googleapis.com/preview-friendly-links-prod/wandb-public-images/links/olacaktekrar/vis92er7.png">](https://api.wandb.ai/links/olacaktekrar/vis92er7)
 - Evaluation/Loss
-  - [<img src="assets/eval_loss_starcoder.png"](https://api.wandb.ai/links/olacaktekrar/vis92er7)
+   - [![A mushroom-head robot](assets/eval_loss_starcoder.png 'Codey the Codecademy mascot')](https://api.wandb.ai/links/olacaktekrar/vis92er7)
 ## Collection (click to view)
 [<img src="assets/collection.png">](https://huggingface.co/collections/olmaditekrar/starcoderbase-life2scenario-6605dfb6cb776765fa7cc24d)
 
