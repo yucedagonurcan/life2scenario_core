@@ -65,9 +65,9 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 ## Training Report (click to view)
 
 - Training/Loss
-   - [![A mushroom-head robot](assets/training_loss_models.png 'Codey the Codecademy mascot')](https://api.wandb.ai/links/olacaktekrar/vis92er7)
+   - [![A mushroom-head robot](assets/training_loss_models.png 'Codey the Codecademy mascot')](https://api.wandb.ai/links/iutdhaka/lh24dpmt)
 - Evaluation/Loss
-   - [![A mushroom-head robot](assets/eval_loss_starcoder.png 'Codey the Codecademy mascot')](https://api.wandb.ai/links/olacaktekrar/vis92er7)
+   - [![A mushroom-head robot](assets/eval_loss_starcoder.png 'Codey the Codecademy mascot')](https://api.wandb.ai/links/iutdhaka/lh24dpmt)
 ## Collection (click to view)
 [<img src="assets/collection.png">](https://huggingface.co/collections/olmaditekrar/starcoderbase-life2scenario-6605dfb6cb776765fa7cc24d)
 
