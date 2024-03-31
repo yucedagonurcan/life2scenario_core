@@ -108,6 +108,12 @@ generation_config = GenerationConfig(
    1. ![alt text](assets/ex2_s3b_remove.png)
 
 
+# Ablation Studies
+
+## In-Context Learning, Program Generation and Execution(w Interpreter)
+[![In-Context Learning, Program Generation and Execution(w Interpreter)](https://img.youtube.com/vi/anmStzTp6iI/0.jpg)](https://www.youtube.com/watch?v=anmStzTp6iI)
+
+
 ## Main Libraries Used
 - `transformers`: Huggingface library for fine-tuning the model
 - `torch`: PyTorch library for fine-tuning the model
