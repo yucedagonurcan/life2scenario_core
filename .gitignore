@@ -166,3 +166,4 @@ checkpoints/
 checkpoints2/
 **/checkpoints_*/**
 finetune_codellama*
+example/

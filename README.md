@@ -61,6 +61,7 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 - Original models: 
   - Model Link: [bigcode/starcoderbase-1b](https://huggingface.co/bigcode/starcoderbase-1b)
   - Model Link: [bigcode/starcoderbase-3b](https://huggingface.co/bigcode/starcoderbase-3b)
+  - Model Link: [codellama/CodeLlama-13b-Instruct-hf](https://huggingface.co/codellama/CodeLlama-13b-Instruct-hf)
 
 ## Training Report (click to view)
 
@@ -77,6 +78,7 @@ The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal
 | `starcoderbase_3b_life2scenario_medium_60ep` | [starcoderbase_3b_life2scenario_medium_60ep](https://huggingface.co/life2scenario-llm24/starcoderbase_3b_life2scenario_medium_60ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
 | `starcoderbase_1b_life2scenario_minimal_210ep` | [starcoderbase_1b_life2scenario_minimal_210ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_minimal_210ep) | `Life2Scenario-minimal` | [Life2Scenario-minimal](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-minimal) |
 | `starcoderbase_1b_life2scenario_medium_300ep` | [starcoderbase_1b_life2scenario_medium_300ep](https://huggingface.co/life2scenario-llm24/starcoderbase_1b_life2scenario_medium_300ep) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
+| `codellama_13b_life2scenario_medium_300ep` | [CodeLlama-13b-Instruct-hf-merged](https://huggingface.co/life2scenario-llm24/CodeLlama-13b-Instruct-hf-merged) | `Life2Scenario-medium` | [Life2Scenario-medium](https://huggingface.co/datasets/life2scenario-llm24/Life2Scenario-medium) |
 
 
 # Qualitative Results
@@ -106,6 +108,12 @@ generation_config = GenerationConfig(
 2. **Prompt:** `Question: i would like you to remove pedestrian actor named pedestrian_w_transform_15729?`
 3. Failing to remove the right object `pedestrian_w_transform_15729` from the Storyboard, only changing id of another pedestrian object
    1. ![alt text](assets/ex2_s3b_remove.png)
+
+## Example 3
+1. **Model:** `codellama_13b_life2scenario_medium_300ep`
+2. **Prompt:** `Question: i would like to instruct you to remove pedestrian close to hero?`
+3. Failing to remove the object `pedestrian_close_to_hero_16871` from the Storyboard, only changing id of another pedestrian object
+   1. ![alt text](assets/ex3_s4_remvoe.png)
 
 
 # Ablation Studies
