@@ -18,6 +18,12 @@ from trl import SFTTrainer
 from tqdm import tqdm
 import pandas as pd
 
+import sys
+sys.path.append('/home/mkbashar/Downloads/nlp/project/life2scenario_core')
+
+from dataset_process import preprocess
+from dataset_process import postprocess
+
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_id", type=str, default="codellama/CodeLlama-13b-Instruct-hf")
@@ -46,8 +52,8 @@ def get_args():
     parser.add_argument("--output_dir", type=str, default="finetune_codellama")
     parser.add_argument("--num_proc", type=int, default=None)
     parser.add_argument("--log_freq", default=1, type=int)
-    parser.add_argument("--save_freq", type=int, default=5)
-    parser.add_argument("--eval_freq", type=int, default=5)
+    parser.add_argument("--save_freq", type=int, default=100)
+    parser.add_argument("--eval_freq", type=int, default=100)
     parser.add_argument("--resume", type=bool, default=False)
     parser.add_argument("--push_to_hub", type=bool, default=False)
     return parser.parse_args()
@@ -67,9 +73,20 @@ def print_trainable_parameters(model):
         f"trainable params: {trainable_params} || all params: {all_param} || trainable%: {100 * trainable_params / all_param}"
     )
 
-def prepare_sample_text(example, input_column_name="prompt", output_column_name="target"):
+def prepare_sample_text(example, input_column_name="request", output_column_name="response"):
     """Prepare the text from a sample of the dataset."""
-    text = f"Question: {example[input_column_name]}\n\nAnswer: {example[output_column_name]}"
+    prompt = example[input_column_name]
+    mod_prompt2 = prompt.split("```")[1].strip()
+    prepro = preprocess.DataPreProcess(mod_prompt2)
+    mod_prompt = prepro.data_preprocess()
+    mod_prompt = prompt.split("```")[0].strip() + "\n```\n" + mod_prompt + "\n```"
+
+    target = example[output_column_name]
+    mod_target2 = target.split("```")[1].strip()
+    postpro = preprocess.DataPreProcess(mod_target2)
+    mod_target = postpro.data_preprocess()
+    mod_target = target.split("```")[0].strip() + "\n```\n" + mod_target + "\n```"
+    text = f"Question: {mod_prompt}\n\nAnswer: {mod_target}"
     return text
 
 class ConstantLengthDataset(IterableDataset):
@@ -246,8 +263,9 @@ def main(args):
     model.config.pretraining_tp = 1
 
     print_trainable_parameters(model)
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True, padding_side='right')
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = 'right'
 
     train_dataset, eval_dataset = create_datasets(tokenizer, args)
 
@@ -259,7 +277,7 @@ def main(args):
         max_seq_length=8000,
         args=transformers.TrainingArguments(
             per_device_train_batch_size=args.micro_batch_size,
-            per_device_eval_batch_size=args.micro_batch_size,
+            per_device_eval_batch_size=16,
             gradient_accumulation_steps=args.gradient_accumulation_steps,
             save_steps=args.save_freq,
             eval_steps=args.eval_freq,
@@ -281,6 +299,7 @@ def main(args):
             ddp_find_unused_parameters=False,
             output_dir=args.output_dir,
         ),
+        packing=True,
         peft_config=lora_config,
         dataset_text_field=args.dataset_text_field,
     )
