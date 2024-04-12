@@ -51,8 +51,15 @@ There are three main components of the dataset generation module:
       3. `target_scenarios/`: Contains the target scenario descriptions, `.xosc`
 
 [![Life2Scenario Dataset Creation Pipeline Overview](https://img.youtube.com/vi/Fdeo5Of0PZ4/0.jpg)](https://www.youtube.com/watch?v=Fdeo5Of0PZ4)
-
-
+# Evaluation Metric
+We introduce a new metric `EntityCount` which is calculated by: 
+$$
+EntityCount = \neg (I_{\text{gt}} \oplus I_{\text{pred}})
+$$
+where:
+- \(I_{\text{gt}}\) is 1 if the count from the ground truth matches the expected count, and 0 otherwise.
+- \(I_{\text{pred}}\) is 1 if the count from the prediction matches the expected count, and 0 otherwise.
+  
 # Fine-tuning the Model
 The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal` dataset with the `transformers` library. 
 
