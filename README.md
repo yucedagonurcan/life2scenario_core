@@ -53,9 +53,7 @@ There are three main components of the dataset generation module:
 [![Life2Scenario Dataset Creation Pipeline Overview](https://img.youtube.com/vi/Fdeo5Of0PZ4/0.jpg)](https://www.youtube.com/watch?v=Fdeo5Of0PZ4)
 # Evaluation Metric
 We introduce a new metric `EntityCount` which is calculated by: 
-$$
-EntityCount = \neg (I_{\text{gt}} \oplus I_{\text{pred}})
-$$
+$$EntityCount = \neg (I_{\text{gt}} \oplus I_{\text{pred}})$$
 where:
 - \(I_{\text{gt}}\) is 1 if the count from the ground truth matches the expected count, and 0 otherwise.
 - \(I_{\text{pred}}\) is 1 if the count from the prediction matches the expected count, and 0 otherwise.
