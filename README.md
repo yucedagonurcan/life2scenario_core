@@ -57,7 +57,10 @@ $$EntityCount = \neg (I_{\text{gt}} \oplus I_{\text{pred}})$$
 where:
 - \(I_{\text{gt}}\) is 1 if the count from the ground truth matches the expected count, and 0 otherwise.
 - \(I_{\text{pred}}\) is 1 if the count from the prediction matches the expected count, and 0 otherwise.
-  
+
+# Data Processing
+1. `preprocess.py`: Responsible for preprocessing XML data. It removes specified XML elements (`GlobalAction`, `Story`, `StopTrigger`) from the input data. Additionally, it cleans up the XML string formatting by removing extra spaces before self-closing tags and prepends an XML declaration to the output.
+2. `postprocess.py`: Responsible for post-processes XML data by integrating elements from an input XML into a predicted XML structure. It specifically extracts and removes `GlobalAction`, `Story`, and `StopTrigger` elements from the input data's specified parent tags and reinserts them into the predicted XML structure at designated locations. After reinserting the elements, it cleans the XML string by removing unnecessary spaces before self-closing tags and adds an XML declaration at the beginning.
 # Fine-tuning the Model
 The `bigcode/starcoderbase-1b` model is fine-tuned on the `Life2Scenario-minimal` dataset with the `transformers` library. 
 
