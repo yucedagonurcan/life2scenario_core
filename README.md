@@ -120,7 +120,7 @@ generation_config = GenerationConfig(
 ## Example 3
 1. **Model:** `codellama_13b_life2scenario_medium_300ep`
 2. **Prompt:** `Question: i would like to instruct you to remove pedestrian close to hero?`
-3. Failing to remove the object `pedestrian_close_to_hero_16871` from the Storyboard, only changing id of another pedestrian object
+3. Able to remove the object `pedestrian_close_to_hero_16871` from the Storyboard, only changing id of another pedestrian object
    1. ![alt text](assets/ex3_s4_remvoe.png)
 
 
